@@ -8,8 +8,48 @@ This project demonstrates the technical process of automating IT service managem
 * **Account Permissions**: User account with `rest_service` or `itil` roles.
 * **Environment**: PowerShell 5.1 or PowerShell Core.
 
-## Project Files
-* **[Create-SNOW-Incident.ps1](./Create-SNOW-Incident.ps1)**: The main automation script used to execute the API call.
+## Implementation Script
+To create an incident, run the following PowerShell script. Ensure you replace the placeholder credentials with your own.
+
+```
+powershell
+# 1. Credentials Configuration
+$User = "YOUR_USERNAME"
+$Pass = "YOUR_PASSWORD"
+
+# 2. Base64 Encoding for Basic Authentication
+$pair = "${User}:${Pass}"
+$bytes = [System.Text.Encoding]::UTF8.GetBytes($pair)
+$encoded = [Convert]::ToBase64String($bytes)
+
+# 3. Request Headers
+$Headers = @{
+    "Accept"        = "application/json"
+    "Content-Type"  = "application/json"
+    "Authorization" = "Basic $encoded"
+}
+
+# 4. Constructing the Incident Payload
+$Body = @{
+    short_description = "Automated Lab Incident"
+    description       = "Incident created via PowerShell automation lab."
+    category          = "Software"
+    subcategory       = "Application"
+    impact            = "3"
+    urgency           = "3"
+} | ConvertTo-Json
+
+# 5. Executing the API Call
+$Response = Invoke-RestMethod -Uri "[https://dev280690.service-now.com/api/now/table/incident](https://dev280690.service-now.com/api/now/table/incident)" `
+    -Method Post `
+    -Headers $Headers `
+    -Body $Body
+
+# 6. Output Results for Verification
+Write-Host "Incident Created Successfully!" -ForegroundColor Green
+$Response.result | Format-List number, sys_id, short_description
+```
+
 
 ## Verification Process
 After execution, success is confirmed by:
