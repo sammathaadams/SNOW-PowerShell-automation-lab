@@ -15,24 +15,21 @@ To replicate this lab, the following are required:
 * **Environment**: A terminal with PowerShell 5.1 or PowerShell Core.
 
 ## Implementation Script
-The following PowerShell script is used to execute the automated incident creation. It has been updated to point directly to the `/api/now/table/incident` pathway.
+The following PowerShell script is used to execute the automated incident creation. 
 
 # 1. Credentials Configuration
 $User = "YOUR_USERNAME"
 $Pass = "YOUR_PASSWORD"
-
 # 2. Base64 Encoding for Basic Authentication
 $pair = "${User}:${Pass}"
 $bytes = [System.Text.Encoding]::UTF8.GetBytes($pair)
 $encoded = [Convert]::ToBase64String($bytes)
-
 # 3. Request Headers
 $Headers = @{
     "Accept"        = "application/json"
     "Content-Type"  = "application/json"
     "Authorization" = "Basic $encoded"
 }
-
 # 4. Constructing the Incident Payload (JSON)
 $Body = @{
     short_description = "Automated Lab Incident"
@@ -42,7 +39,6 @@ $Body = @{
     impact            = "3"
     urgency           = "3"
 } | ConvertTo-Json
-
 # 5. Executing the API Call
 $Response = Invoke-RestMethod -Uri "https://dev280690.service-now.com/api/now/table/incident" `
     -Method Post `
