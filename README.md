@@ -15,9 +15,8 @@ To replicate this lab, the following are required:
 * **Environment**: A terminal with PowerShell 5.1 or PowerShell Core.
 
 ## Implementation Script
-The following PowerShell script is used to execute the automated incident creation.
+The following PowerShell script is used to execute the automated incident creation. It has been updated to point directly to the `/api/now/table/incident` pathway.
 
-```powershell
 # 1. Credentials Configuration
 $User = "YOUR_USERNAME"
 $Pass = "YOUR_PASSWORD"
@@ -45,7 +44,7 @@ $Body = @{
 } | ConvertTo-Json
 
 # 5. Executing the API Call
-$Response = Invoke-RestMethod -Uri "[https://dev280690.service-now.com/api/now/table/incident](https://dev280690.service-now.com/api/now/table/incident)" `
+$Response = Invoke-RestMethod -Uri "https://dev280690.service-now.com/api/now/table/incident" `
     -Method Post `
     -Headers $Headers `
     -Body $Body
@@ -53,6 +52,7 @@ $Response = Invoke-RestMethod -Uri "[https://dev280690.service-now.com/api/now/t
 # 6. Output Results for Verification
 Write-Host "Incident Created Successfully!" -ForegroundColor Green
 $Response.result | Format-List number, sys_id, short_description
+
 
 ## Verification Process
 After execution, success is confirmed by:
