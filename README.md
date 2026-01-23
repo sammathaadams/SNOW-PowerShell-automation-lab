@@ -1,7 +1,7 @@
-# SNOW-PowerShell-automation-lab
-A technical lab demonstrating how to automate ServiceNow incident management. This project focuses on using PowerShell to interact with the Table API, covering secure credential handling, JSON payload construction, and REST API verification.
 # SNOW-PowerShell-Automation-Lab
 
+## Project Overview
+This project demonstrates the technical process of automating IT service management tasks through API integration. Specifically, it provides a standardized procedure for programmatically creating incidents in a ServiceNow development instance using PowerShell and the Table API.
 
 This lab focuses on the practical application of:
 * **REST API Integration**: Interacting with the ServiceNow Table API.
@@ -15,8 +15,9 @@ To replicate this lab, the following are required:
 * **Environment**: A terminal with PowerShell 5.1 or PowerShell Core.
 
 ## Implementation Script
-The following PowerShell script is used to execute the automated incident creation. It has been updated to point directly to the `/api/now/table/incident` pathway.
+The following PowerShell script is used to execute the automated incident creation.
 
+```powershell
 # 1. Credentials Configuration
 $User = "YOUR_USERNAME"
 $Pass = "YOUR_PASSWORD"
@@ -44,8 +45,7 @@ $Body = @{
 } | ConvertTo-Json
 
 # 5. Executing the API Call
-# Correct API Pathway: /api/now/table/incident
-$Response = Invoke-RestMethod -Uri "https://dev280690.service-now.com/api/now/table/incident" `
+$Response = Invoke-RestMethod -Uri "[https://dev280690.service-now.com/api/now/table/incident](https://dev280690.service-now.com/api/now/table/incident)" `
     -Method Post `
     -Headers $Headers `
     -Body $Body
@@ -53,7 +53,6 @@ $Response = Invoke-RestMethod -Uri "https://dev280690.service-now.com/api/now/ta
 # 6. Output Results for Verification
 Write-Host "Incident Created Successfully!" -ForegroundColor Green
 $Response.result | Format-List number, sys_id, short_description
-
 
 ## Verification Process
 After execution, success is confirmed by:
