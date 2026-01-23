@@ -20,16 +20,19 @@ The following PowerShell script is used to execute the automated incident creati
 # 1. Credentials Configuration
 $User = "YOUR_USERNAME"
 $Pass = "YOUR_PASSWORD"
+
 # 2. Base64 Encoding for Basic Authentication
 $pair = "${User}:${Pass}"
 $bytes = [System.Text.Encoding]::UTF8.GetBytes($pair)
 $encoded = [Convert]::ToBase64String($bytes)
+
 # 3. Request Headers
 $Headers = @{
     "Accept"        = "application/json"
     "Content-Type"  = "application/json"
     "Authorization" = "Basic $encoded"
 }
+
 # 4. Constructing the Incident Payload (JSON)
 $Body = @{
     short_description = "Automated Lab Incident"
@@ -39,8 +42,9 @@ $Body = @{
     impact            = "3"
     urgency           = "3"
 } | ConvertTo-Json
+
 # 5. Executing the API Call
-$Response = Invoke-RestMethod -Uri "https://dev280690.service-now.com/api/now/table/incident" `
+$Response = Invoke-RestMethod -Uri "[https://dev280690.service-now.com/api/now/table/incident](https://dev280690.service-now.com/api/now/table/incident)" `
     -Method Post `
     -Headers $Headers `
     -Body $Body
@@ -48,6 +52,7 @@ $Response = Invoke-RestMethod -Uri "https://dev280690.service-now.com/api/now/ta
 # 6. Output Results for Verification
 Write-Host "Incident Created Successfully!" -ForegroundColor Green
 $Response.result | Format-List number, sys_id, short_description
+
 
 
 ## Verification Process
