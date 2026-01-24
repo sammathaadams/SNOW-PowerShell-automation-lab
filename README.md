@@ -56,5 +56,12 @@ After execution, success is confirmed by:
 1. **API Response**: Analyzing the returned JSON for a valid `sys_id` and incident `number`.
 2. **UI Confirmation**: Logging into the ServiceNow instance and searching for the generated incident number.
 
+![Incident created Sucessfully ](https://github.com/user-attachments/assets/4ec10d39-560a-4fc8-99e9-77b680f115fc)
+
+
+![Tcicket showing Incident number ](https://github.com/user-attachments/assets/8533e8db-bee5-4f03-96e9-62371288730e)
+
+
+
 ## Security Considerations
 * **Credential Safety**: In a production environment, avoid hardcoding passwords. Use secure methods like `Get-Credential`.
