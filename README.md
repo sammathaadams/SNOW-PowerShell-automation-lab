@@ -4,9 +4,9 @@
 This project demonstrates the technical process of automating IT service management tasks through API integration. It provides a standardized procedure for programmatically creating incidents in a ServiceNow development instance using PowerShell and the Table API.
 
 ## Prerequisites
-* **ServiceNow Instance**: Access to a development instance (e.g., https://dev280690.service-now.com).
-* **Account Permissions**: User account with `rest_service` or `itil` roles.
-* **Environment**: PowerShell 5.1 or PowerShell Core.
+- **ServiceNow Instance**: Access to a development instance (e.g., [https://dev280690.service-now.com](https://dev280690.service-now.com)).
+- **Account Permissions**: User account with `rest_service` or `itil` roles.
+- **Environment**: Developed and tested using **PowerShell ISE** (compatible with PowerShell 5.1).
 
 ## Implementation Script
 To create an incident, run the following PowerShell script. Ensure you replace the placeholder credentials with your own.
