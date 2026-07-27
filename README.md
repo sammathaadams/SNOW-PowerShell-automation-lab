@@ -3,7 +3,9 @@
 ## Project Overview
 This project demonstrates the technical process of automating IT service management tasks through API integration. It provides a standardized procedure for programmatically creating incidents in a ServiceNow development instance using PowerShell and the Table API.
 
-[# Watch Me complete this lab here](https://www.loom.com/share/853580b6f5aa42a1b7f13775477db347)
+# Watch Me complete this lab here
+
+(https://www.loom.com/share/853580b6f5aa42a1b7f13775477db347)
 
 
 ## Prerequisites
