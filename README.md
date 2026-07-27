@@ -5,7 +5,7 @@ This project demonstrates the technical process of automating IT service managem
 
 # Watch Me complete this lab here
 
-(https://www.loom.com/share/853580b6f5aa42a1b7f13775477db347)
+https://www.loom.com/share/853580b6f5aa42a1b7f13775477db347
 
 
 ## Prerequisites
